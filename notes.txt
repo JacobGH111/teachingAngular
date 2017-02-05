@@ -1,0 +1,6 @@
+# Teaching Notes
+
+## Advantages of Angular overy Jquery in this example
+- code enabling/disabling submit button is way simpler - `ng-disabled` vs `$('#submit).prop('disabled', ...)`
+- with Jquery, need to remember to write code to enable *and* disable button
+- with Jquery, need to write method that is called when text changes.  Angular does this automatically

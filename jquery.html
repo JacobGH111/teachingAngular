@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+ </head>
+ <body>
+ 	<form>
+	 	<h1>Quitter</h1>
+	 	<textarea id="content" placeholder="post something"></textarea>
+	 	<div id=charsLeft></div>
+
+	 	<input id="submit" type="submit" value="Post">
+ 	</form>
+
+ 	<script>
+ 	var charMax = 4;
+ 		function showCharsLeft(){
+ 			chars = $('#content').val()
+ 			if(chars.length > charMax){
+ 				$('#charsLeft').text((chars.length-charMax) + " characters over limit")
+ 				$('#submit').prop('disabled', true)
+ 			}
+ 			else{
+ 				$('#charsLeft').text((charMax-chars.length) + " characters left")
+ 				$('#submit').prop('disabled', false)
+ 			}
+ 		}
+ 		showCharsLeft()
+ 		$('#content').bind('input propertychange', function(){
+ 			showCharsLeft()
+ 		})
+ 	</script>
+ </body>
+</html>

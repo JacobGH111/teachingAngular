@@ -4,3 +4,6 @@
 - code enabling/disabling submit button is way simpler - `ng-disabled` vs `$('#submit).prop('disabled', ...)`
 - with Jquery, need to remember to write code to enable *and* disable button
 - with Jquery, need to write method that is called when text changes.  Angular does this automatically
+- javascript generally encourages "action at a distance" code design, which makes debugging difficult.  Angular alleviates this
+- jQuery form submitting is awkward and error prone.  Easy to forget the `e.preventDeafult()`.
+- jQuery requires you to worry about setting initial state (e.g. running `showCharsLeft()` on initialize and starting loading gif as hidden)

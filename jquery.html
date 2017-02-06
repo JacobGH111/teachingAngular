@@ -4,13 +4,17 @@
 	<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
  </head>
  <body>
- 	<form>
+ 	<form id="form">
 	 	<h1>Quitter</h1>
 	 	<textarea id="content" placeholder="post something"></textarea>
 	 	<div id=charsLeft></div>
-
+	 	<div id="success" hidden>Post Succesful!</div>
+	 	<div><img src="loading.gif" hidden id="loading" width="80px" /></div>
 	 	<input id="submit" type="submit" value="Post">
  	</form>
+
+	<h2>Past Posts</h2>
+	<div id='past'></div>
 
  	<script>
  	var charMax = 4;
@@ -28,6 +32,27 @@
  		showCharsLeft()
  		$('#content').bind('input propertychange', function(){
  			showCharsLeft()
+ 		})
+
+ 		$('#form').submit(function(e){
+ 			e.preventDefault() //needed to prevent the form from being submitted the traditional way
+ 			$('#success').hide()
+
+ 			$('#loading').show()
+ 			setTimeout(function(){
+ 				$('#loading').hide()
+ 				var text = $('#content').val()
+ 				$("#content").val("")
+ 				$('#success').show()
+ 				newDiv = $("<div/>")
+ 				newDiv.append(text)
+ 				close = $("<img src='remove.png' width='30px'/>")
+ 				close.click(function(newDiv){return function(){newDiv.remove()}}(newDiv))
+ 				newDiv.append(close)
+ 				$('#past').append(newDiv)
+ 			}, 1000)
+
+
  		})
  	</script>
  </body>
